@@ -20,19 +20,22 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-  cam.update();
-  if(cam.isFrameNew()) {
-    if(tracker.update(toCv(cam))) {
-      classifier.classify(tracker);
-    }
-  }
+//  cam.update();
+//  if(cam.isFrameNew()) {
+//    if(tracker.update(toCv(cam))) {
+//      classifier.classify(tracker);
+//    }
+//  }
 
+  if(tracker.update(toCv(photo))) {
+    classifier.classify(tracker);
+  }
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
   ofSetColor(255);
-  cam.draw(0, 0);
+  photo.draw(0, 0);
   tracker.draw();
   
   int w = 100, h = 12;
